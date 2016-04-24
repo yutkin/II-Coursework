@@ -1,0 +1,112 @@
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=1cm}
+%%% Выравнивание и переносы %%%
+\sloppy                             % Избавляемся от переполнений
+\clubpenalty=10000                  % Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000                 % Запрещаем разрыв страницы после последней строки абзаца
+\usepackage{indentfirst}
+\frenchspacing
+\setlength{\parindent}{2.5em} 
+\linespread{1.3}
+
+\definecolor{linkcolor}{rgb}{0.9,0,0}
+\definecolor{citecolor}{rgb}{0,0.6,0}
+\definecolor{urlcolor}{rgb}{0,0,1}
+
+\hypersetup{				% Гиперссылки
+    unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Применение глубоких свёрточных нейронных сетей для решения задачи распознавания образов},    % title
+    pdfauthor={Юткин Дмитрий Игоревич},     % author
+    pdfsubject={Курсовая},   % subject of the document
+    pdfcreator={Юткин Дмитрий Игоревич},   % creator of the document
+    pdfproducer={Юткин Дмитрий Игоревич}, % producer of the document
+    pdfkeywords={convolutional} {neural} {networks} 
+    {deeplearning} {deep} {learning} {caffe} {сверточные} {нейронные} {сети}
+    {глубокое} {обучение} {компьютерное} {зрение}, % Ключевые слова
+    pdfnewwindow=true,
+    pdflang={ru} {en},
+    linktocpage=true,
+    plainpages=false,
+    colorlinks,       	    % false: ссылки в рамках; true: цветные ссылки
+    linkcolor={linkcolor},      % цвет ссылок типа ref, eqref и подобных
+    citecolor={citecolor},      % цвет ссылок-цитат
+    urlcolor={urlcolor},        % цвет гиперссылок
+}
+
+
+
+
+
+
+
+
+
+
+%%% Рисунки %%%
+\DeclareCaptionLabelSeparator{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+\captionsetup{%
+    singlelinecheck=off,                % Многострочные подписи, например у таблиц
+    skip=2pt,                           % Вертикальная отбивка между подписью и содержимым рисунка или таблицы определяется ключом
+    justification=centering,            % Центрирование подписей, заданных командой \caption
+}
+
+%%% Подписи подрисунков %%%
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}           % Буквенные номера подрисунков
+\captionsetup[subfigure]{font={normalsize},               % Шрифт подписи названий подрисунков (не отличается от основного)
+    labelformat=brace,                                    % Формат обозначения подрисунка
+    justification=centering,                              % Выключка подписей (форматирование), один из вариантов            
+}
+
+
+
+%%% Списки %%%
+% Используем короткое тире (endash) для ненумерованных списков (ГОСТ 2.105-95, пункт 4.1.7, требует дефиса, но так лучше смотрится)
+\renewcommand{\labelitemi}{\normalfont\bfseries{--}}
+
+% Перечисление строчными буквами русского алфавита (ГОСТ 2.105-95, 4.1.7)
+\makeatletter
+    \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
+\makeatother
+\setlist[enumerate,1]{label=\asbuk{enumi})} % первого уровня 1), 2)...
+\setlist[enumerate,2]{label=\arabic*)} % второго уровня а), б) ... 
+
+\setlist{nosep,%                                    % Единый стиль для всех списков (пакет enumitem), без дополнительных интервалов.
+    labelindent=\parindent,leftmargin=*%            % Каждый пункт, подпункт и перечисление записывают с абзацного отступа
+}
+
+%%% Переопределение именований %%%
+\addto\captionsrussian{%
+    \renewcommand{\partname}{Часть}
+    \renewcommand{\abstractname}{Аннотация}
+    \renewcommand{\contentsname}{Оглавление} % (ГОСТ Р 7.0.11-2011, 4)
+    \renewcommand{\figurename}{Рисунок} % (ГОСТ Р 7.0.11-2011, 5.3.9)
+    \renewcommand{\tablename}{Таблица} % (ГОСТ Р 7.0.11-2011, 5.3.10)
+    \renewcommand{\indexname}{Предметный указатель}
+    \renewcommand{\listfigurename}{Список рисунков}
+    \renewcommand{\listtablename}{Список таблиц}
+    \renewcommand{\refname}{\fullbibtitle}
+}
+
+%%% Старт отсчет страниц с титульника
+\makeatletter
+\renewenvironment{titlepage}
+ {%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse\newpage
+  \fi
+  \thispagestyle{empty}%
+ }
+ {%
+  \if@restonecol
+    \twocolumn
+  \else
+    \newpage
+  \fi
+ }
+\makeatother
