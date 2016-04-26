@@ -1,10 +1,10 @@
-\documentclass[a4paper,14pt]{extarticle}
+\documentclass[a4paper, 14pt]{extarticle}
 \usepackage{geometry}
 
 \usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
 \usepackage{mathtext} % русские буквы в формулах
 \defaulthyphenchar=127 % Если стоит до fontenc, то переносы не впишутся в выделяемый текст при копировании его в буфер обмена
-\usepackage[T2A]{fontenc} % кодировка
+\usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english, russian]{babel}
 \usepackage{pscyr}
@@ -15,7 +15,7 @@
 
 \usepackage{longtable} % Длинные таблицы
 \usepackage{multirow,makecell,array} % Улучшенное форматирование таблиц
-\usepackage{booktabs} % Возможность оформления таблиц в классическом книжном стиле (при правильном использовании не противоречит ГОСТ)
+\usepackage{booktabs} % Возможность оформления таблиц в классическом книжном стиле
 
 \usepackage{soulutf8} % Поддержка переносоустойчивых подчёркиваний и зачёркиваний
 \usepackage{icomma} % Запятая в десятичных дробях
@@ -30,62 +30,30 @@
 %%% Подписи %%%
 \usepackage[singlelinecheck=off,center]{caption}
 \usepackage{subcaption}
+
 \usepackage[onehalfspacing]{setspace}
 
 %%% Списки %%%
 \usepackage{enumitem}
 
 %%% Библиография %%%
-\usepackage{cite}                                   % Красивые ссылки на литературу
+\usepackage{cite} % Красивые ссылки на литературу
 
 %%% Оглавление %%%
 \usepackage[nottoc]{tocbibind}
 \usepackage{tocloft}
 \usepackage{titlesec}
 
-\input{styles} % Файл с настройкой стилей
+\usepackage{abstract}
+\usepackage{titlesec} % Растояние между заголовками и текстом
 
+\input{styles} % Файл со стилями
 
 \begin{document}
 \include{title_list} % Титульник
 \include{abstract} % Аннотация
+\include{table_of_content} % Аннотация  
+\include{intro} % Введение
 
-\tableofcontents
-\clearpage
-
-\section{Введение}
-Идейные соображения высшего порядка, а \textbf{также} рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. С другой стороны реализация намеченных плановых заданий играет важную роль в формировании форм развития. 
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{test.png}
-    \caption{Прекрасная подпись к рисунку}
-\end{figure}
-
-Повседневная практика показывает, что начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке форм развития. Таким образом консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании дальнейших направлений развития.
-\begin{enumerate}
-\item The first item
-    \begin{enumerate}
-    \item Nested item 1
-    \item Nested item 2
-    \end{enumerate}
-\item The second item
-\item The third etc \ldots
-\end{enumerate}
-
-\begin{itemize}
-\item more work
-\item more responsibility
-\item more satisfaction
-\end{itemize}
-
-\subsection{Sub-section}
-Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки модели развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции играет важную роль в формировании существенных финансовых и административных условий. Товарищи! консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании новых предложений. Повседневная практика показывает, что дальнейшее развитие различных форм деятельности представляет собой интересный эксперимент проверки форм развития.
-\subsubsection{Sub-sub-section}
-Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки модели развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции играет важную роль в формировании существенных финансовых и административных условий. Товарищи! консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании новых предложений. Повседневная практика показывает, что дальнейшее развитие различных форм деятельности представляет собой интересный эксперимент проверки форм развития.
-\section{Еще Текст}
-Blablabla said Nobody ~\cite{einstein}. to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
-
-\clearpage
-\bibliography{biblio}
+\include{bibliography}
 \end{document}
