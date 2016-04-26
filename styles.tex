@@ -27,7 +27,7 @@
     {deeplearning} {deep} {learning} {caffe} {сверточные} {нейронные} {сети}
     {глубокое} {обучение} {компьютерное} {зрение}, % Ключевые слова
     pdfnewwindow=true,
-    pdflang={ru} {en},
+    pdflang={ru},
     linktocpage=true,
     plainpages=false,
     colorlinks,       	    % false: ссылки в рамках; true: цветные ссылки
@@ -36,7 +36,7 @@
     urlcolor={urlcolor},        % цвет гиперссылок
 }
 
-%%% Рисунки %%%
+%% Рисунки %%%
 \DeclareCaptionLabelSeparator{emdash}{~--- }
 \captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
 \captionsetup{%
@@ -45,7 +45,7 @@
     justification=centering,            % Центрирование подписей, заданных командой \caption
 }
 
-%%% Подписи подрисунков %%%
+%% Подписи подрисунков %%%
 \renewcommand{\thesubfigure}{\asbuk{subfigure}}           % Буквенные номера подрисунков
 \captionsetup[subfigure]{font={normalsize},               % Шрифт подписи названий подрисунков (не отличается от основного)
     labelformat=brace,                                    % Формат обозначения подрисунка
@@ -77,9 +77,8 @@
     \renewcommand{\indexname}{Предметный указатель}
     \renewcommand{\listfigurename}{Список рисунков}
     \renewcommand{\listtablename}{Список таблиц}
-    \renewcommand{\refname}{\fullbibtitle}
 }
-
+%
 %%% Старт отсчет страниц с титульника
 \makeatletter
 \renewenvironment{titlepage}
@@ -99,3 +98,34 @@
   \fi
  }
 \makeatother
+%%%
+
+%%% Библиография %%%
+\makeatletter
+\bibliographystyle{utf8gost71u}     % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+\renewcommand{\@biblabel}[1]{#1.}   % Заменяем библиографию с квадратных скобок на точку
+\makeatother
+
+%%% Оглавление %%%
+\cftsetrmarg{2.55em plus1fil} %To have the (sectional) titles in the ToC, etc., typeset ragged right with no hyphenation
+\renewcommand{\cftsecdotsep}{\cftdotsep} % отбивка точками до номера страницы начала главы/раздела
+\renewcommand{\cftsecpagefont}{\normalfont}        % нежирные номера страниц у глав в оглавлении
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}% нежирные точки до номеров страниц у глав в оглавлении
+%\renewcommand{\cftsecfont}{}                       % нежирные названия глав в оглавлении
+%\renewcommand\cftsecaftersnum{.\ }   % добавляет точку с пробелом после номера раздела в оглавлении
+%\renewcommand\cftsecaftersnum{.\ }    % добавляет точку с пробелом после номера подраздела в оглавлении
+%\renewcommand\cftsubsecaftersnum{.\ } % добавляет точку с пробелом после номера подподраздела в оглавлении
+%\renewcommand\cftsecaftersnum{\quad}     % добавляет \quad после номера раздела в оглавлении
+%\renewcommand\cftsecaftersnum{\quad}      % добавляет \quad после номера подраздела в оглавлении
+%\renewcommand\cftsubsecaftersnum{\quad}   % добавляет \quad после номера подподраздела в оглавлении
+%\addtocontents{toc}{~\hfill{Стр.}\par}% добавить Стр. над номерами страниц
+
+%%% Оформление заголовков глав, разделов, подразделов %%%
+\titleformat{\section}[block]
+  {\filright\fontsize{16pt}{18pt}\selectfont\bfseries}{\thesection\cftsecaftersnum}{0.5em}{}
+
+\titleformat{\subsection}[block]
+  {\filright\fontsize{16pt}{18pt}\selectfont\bfseries}{\thesubsection\cftsubsecaftersnum}{0.5em}{}
+
+\titleformat{\subsubsection}[block]
+  {\filright\fontsize{16pt}{18pt}\selectfont\bfseries}{\thesubsubsection\cftsubsecaftersnum}{0.5em  }{}
