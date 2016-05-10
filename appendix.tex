@@ -1,0 +1,34 @@
+\setcounter{secnumdepth}{0}
+\section{Приложение}
+\begin{table}[h]
+\caption{Архитектуры обученных моделей}
+\resizebox{18cm}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+    Model I (93.3\%) & Model II (88.6\%) & Model III (91.0\%) & Model IV (87.3\%) & Model V (89.3\%) & Model VI (92.0\%) & Model VII (92.3\%) \\ \hline
+    conv1\_1 3x3x32  & conv1\_1 3x3x32   & conv1\_1 3x3x64    & conv1 4x4x32      & conv1 3x3x32     & conv1\_1 3x3x64   & conv1\_1 3x3x32    \\
+    conv1\_2 3x3x32  & conv1\_2 3x3x32   & conv1\_2 3x3x64    & conv2 4x4x64      & conv2 3x3x32     & conv1\_2 3x3x64   & conv1\_2 3x3x32    \\
+    conv1\_3 3x3x32  & conv1\_3 3x3x32   & conv1\_3 3x3x64    & conv3 4x4x96      & conv3 3x3x64     & conv1\_3 3x3x64   & conv1\_3 3x3x32    \\
+    conv1\_4 3x3x48  & pool 2x2          & pool 2x2           & conv4 4x4x128     & conv4 3x3x64     & conv1\_4 3x3x64   & conv1\_4 3x3x48    \\ \cline{2-3}
+    conv1\_5 3x3x48  & conv2\_1 3x3x64   & conv2\_1 3x3x128   & conv5 4x4x160     & conv5 3x3x128    & conv1\_5 3x3x64   & conv1\_5 3x3x48    \\
+    pool 2x2         & conv2\_2 3x3x64   & conv2\_2 3x3x128   & conv6 4x4x192     & conv6 3x3x128    & pool 2x2          & pool 2x2           \\ \cline{1-1} \cline{6-7} 
+    conv2\_1 3x3x80  & conv2\_3 3x3x64   & conv2\_3 3x3x128   & conv7 4x4x224     & conv7 3x3x256    & conv2\_1 3x3x128  & conv2\_1 3x3x80    \\
+    conv2\_2 3x3x80  & conv2\_4 3x3x64   & conv2\_4 3x3x128   & conv8 4x4x256     & conv8 3x3x256    & conv2\_2 3x3x128  & conv2\_2 3x3x80    \\
+    conv2\_3 3x3x80  & pool 2x2          & pool 2x2           & conv9 4x4x228     & conv9 3x3x256    & conv2\_3 3x3x128  & conv2\_3 3x3x80    \\ \cline{2-4}
+    conv2\_4 3x3x80  & conv3\_1 3x3x128  & conv3\_1 3x3x256   & fc 256            & conv10 3x3x256   & conv2\_4 3x3x128  & conv2\_4 3x3x80    \\
+    conv2\_5 3x3x80  & conv3\_2 3x3x128  & conv3\_2 3x3x256   & softmax 10        & conv11 3x3x256   & conv2\_5 3x3x128  & conv2\_5 3x3x80    \\
+    conv2\_6 3x3x80  & conv3\_3 3x3x128  & conv3\_3 3x3x256   &                   & conv12 3x3x512   & conv2\_6 3x3x128  & conv2\_6 3x3x80    \\
+    pool 2x2         & conv3\_4 3x3x128  & conv3\_4 3x3x256   &                   & conv13 3x3x512   & pool 2x2          & pool 2x2           \\ \cline{1-1} \cline{6-7} 
+    conv3\_1 3x3x128 & pool global       & pool 2x2           &                   & conv14 3x3x512   & conv3\_1 3x3x256  & conv3\_1 3x3x128   \\ \cline{2-3} \cline{5-5}
+    conv3\_2 3x3x128 & fc 256            & fc 256             &                   & fc 512           & conv3\_2 3x3x256  & conv3\_2 3x3x128   \\
+    conv3\_3 3x3x128 & softmax 10        & softmax 10         &                   & softmax 10       & conv3\_3 3x3x256  & conv3\_3 3x3x128   \\
+    conv3\_4 3x3x128 &                   &                    &                   &                  & conv3\_4 3x3x256  & conv3\_4 3x3x128   \\
+    conv3\_5 3x3x128 &                   &                    &                   &                  & conv3\_5 3x3x256  & conv3\_5 3x3x128   \\
+    conv3\_6 3x3x128 &                   &                    &                   &                  & conv3\_6 3x3x256  & conv3\_6 3x3x128   \\
+    pool global      &                   &                    &                   &                  & pool global       & pool global        \\ \cline{1-1} \cline{6-7} 
+    fc 500           &                   &                    &                   &                  & fc 512            & fc 512             \\
+    softmax 10       &                   &                    &                   &                  & softmax 10        & softmax 10         \\ \hline
+    \end{tabular}
+}
+\label{models-table}
+\end{table}

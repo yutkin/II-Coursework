@@ -43,6 +43,9 @@
 %% Рисунки %%%
 \DeclareCaptionLabelSeparator{emdash}{~--- }
 \captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+\captionsetup[subfigure]{subrefformat=simple,labelformat=simple}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+
 \captionsetup{%
     singlelinecheck=off,                % Многострочные подписи, например у таблиц
     skip=2pt,                           % Вертикальная отбивка между подписью и содержимым рисунка или таблицы определяется ключом
