@@ -2,7 +2,7 @@
 \subsection{Датасет CIFAR-10}
 Набор данных, на котором проводились исследования, состоит из 60\,000 цветных изображений, размера 
 32$\times$32 пикселя. Каждое изображение принадлежит одному из 10 классов\footnote{самолёт, автомобиль, птица,
-кот, олень, собака, лягушка, лошадь, корабль, грузовик}, что соответствует 600 изображениям на класс. Под 
+кот, олень, собака, лягушка, лошадь, корабль, грузовик}, что соответствует 6\,000 изображениям на класс. Под 
 обучение отводится 50\,000 изображений. Остальные 10\,000 используются для тестирования. Объекты в классах сильно варьируются, 
 например, класс <<птица>> содержит различные виды птиц, как большие так и маленькие. Кроме того, объекты классов представлены в 
 различных позах и под различными углами. Особенно это проявляется среди собак и котов, которые изображены не только в различных 
@@ -18,7 +18,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{cifar10}
-\caption{10 случайных изображений из 10 классов датасета CIFAR-10}
+\caption{10 случайных изображений из каждого класса}
 \end{figure}
 
 \subsection{Фреймворк Caffe}
@@ -118,9 +118,9 @@ Maxout в качестве функции активации является е
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{confusion_matrix_model_I}
-    \vspace*{-0.5cm}
-    \caption{Матрица ответов модели I}
+    \includegraphics[width=0.6\textwidth]{confusion_matrix_model_I}
+    \vspace*{-1cm}
+    \caption{Матрица предсказаний модели I}
     \label{fig:confusion_matrix_model_I}
 \end{figure}
 
@@ -142,12 +142,14 @@ Maxout в качестве функции активации является е
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=\textwidth]{confusion_matrix_model_II}
-  \captionof{figure}{Матрица ответов\\модели II}
+  \vspace*{-1.7cm}
+  \captionof{figure}{Матрица предсказаний\\модели II}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=\textwidth]{confusion_matrix_model_III}
-  \captionof{figure}{Матрица ответов\\модели III}
+  \vspace*{-1.7cm}
+  \captionof{figure}{Матрица предсказаний\\модели III}
 \end{minipage}
 \end{figure}
 
@@ -157,14 +159,30 @@ Maxout в качестве функции активации является е
 \cite{DBLP:journals/corr/SpringenbergDBR14}. В данных сетях max-pooling~2$\times$2 слои были заменены 
 на свёрточные слои со stride равным двум.
 
-Модель IV имеет $\approx$\,6 млн. параметров и 13 слоёв. В качестве функции активации используется ReLU.
+Модель V имеет $\approx$\,6 млн. параметров и 13 слоёв. В качестве функции активации используется ReLU.
 После обучения в течении 14 часов и 50\,000 итераций, точность на тестовом множестве достигла 92,1\%, что
 подтверждает гипотезу о замене pooling слоёв.
 
-Модель V состоит из 16 слоёв и $\approx$\,7,8 млн свободных параметров. Данная нейронная сеть является попыткой
-улучшить точность модели IV за счёт увеличения числа свёрточных слоёв. Однако, дополнительные слоёв привнесли
-дополнительно $\approx$\,1.8 млн. параметров, что привело к переобучению и снижении конечной точности на 1,2\%.
+Модель IV состоит из 16 слоёв и $\approx$\,7,8 млн свободных параметров. Данная нейронная сеть является попыткой
+улучшить точность модели IV за счёт увеличения числа свёрточных слоёв. Однако, дополнительные слои привнесли
+дополнительно $\approx$\,1,8 млн. параметров, что привело к переобучению и снижении конечной точности на 1,19\%.
 Модель V обучалась в течении 50\,000 итераций, что заняло 19 часов.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{confusion_matrix_model_IV}
+  \vspace*{-1.7cm}
+  \captionof{figure}{Матрица предсказаний\\модели IV}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{confusion_matrix_model_V}
+  \vspace*{-1.7cm}
+  \captionof{figure}{Матрица предсказаний\\модели V}
+\end{minipage}
+\end{figure}
 
 \subsubsection{Модель VI}
 Модель VI состоит из 18 слоёв и $\approx$\,4,2 млн. параметров. Данная модель использует слои batch normalization, 
@@ -183,8 +201,8 @@ Maxout в качестве функции активации является е
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{confusion_matrix_model_VI}
-    \vspace*{-0.5cm}
-    \caption{Матрица ответов модели VI}
+    \vspace*{-1cm}
+    \caption{Матрица предсказаний модели VI}
     \label{fig:confusion_matrix_model_VI}
 \end{figure}
 
@@ -193,44 +211,50 @@ Maxout в качестве функции активации является е
 (Рис. \ref{fig:model_VII_maxout}), тогда как модель I имеет только два слоя. Такое изменение в топологии сети не привело к 
 увеличению конечной точности модели, более того, ошибка увеличилась на 0,9\%. Максимальное число итераций достигло 70\,000,
 время затраченное на обучение составило 22 часа.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{model_VII_maxout}
-    \caption{Соединение maxout активаций в модели~VII}
-    \label{fig:model_VII_maxout}
-\end{figure}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{confusion_matrix_model_VII}
-    \vspace*{-0.5cm}
-    \caption{Матрица ответов модели VII}
-    \label{fig:confusion_matrix_model_VII}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \vspace*{0.7cm}
+  \includegraphics[width=\textwidth]{model_VII_maxout}
+  \vspace*{-0.4cm}
+  \captionof{figure}{Соединение maxout \\активаций в модели~VII}
+  \label{fig:model_VII_maxout}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{confusion_matrix_model_VII}
+  \vspace*{-1.7cm}
+  \captionof{figure}{Матрица предсказаний\\модели VII}
+  \label{fig:confusion_matrix_model_VII}
+\end{minipage}
 \end{figure}
 
 \subsection{Объединение нейронных сетей в ансамбль}
 Объединение нескольких моделей в ансамбль является мощным приёмом при решении различных задач машинного обучения.
 Применение подобной техники было выбрано по причине наличия различных свёрточных нейронных сетей, предсказания которых
-не очень сильно коррелируют между собой. В данном исследовании модели объединялись с помощью <<стэкинга>> (stacking)
-\cite{Wolpert92stackedgeneralization}, идея которого заключается в построении алгоритма, который делает финальные 
-предсказания, основываясь на ответах других моделей (в данном случае на ответах нейронных сетей). Такой подход зачастую
-работает лучше любой из одиночных моделей.
+не очень сильно коррелируют между собой. В данном исследовании создание ансамбля производилось при помощи <<стэкинга>> (stacking)
+\cite{Wolpert92stackedgeneralization}, идея которого заключается в построении алгоритма, объединяющего
+предсказания базовых моделей (в данном случае нейронных сетей). Такой подход зачастую работает лучше, 
+так как усиливает обобщающую способность и робастность конечного классификатора за счёт одиночных моделей.
 
-Для построения конечного ансамбля были протестированы различные алгоритмы классификации, такие как случайный лес, 
-метод k ближайших соседей, персептрон и SVM. Наилучшая точность была достигнута с помощью SVM (94,15\%) с радиально-базисной
-функцией ядра (RBF kernel function). Конечная схема классификатора отражена на рисунке \ref{fig:ansamble}.
+Для построения конечного ансамбля были протестированы различные алгоритмы классификации, такие как случайный лес,
+метод k ближайших соседей, машина опорных векторов и Extra Trees.
+Наилучшая точность была достигнута с помощью Extra Trees \cite{ExtraTrees} (94,21\%).
+Схема объединения моделей отражена на рисунке \ref{fig:ansamble}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{ensamble}
-    \caption{Схема конечного ансамбля моделей}
+    \includegraphics[width=0.9\textwidth]{ensamble}
+    \caption{Схема конечного ансамбля}
     \label{fig:ansamble}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{ensamble_confusion_matrix}
-    \vspace*{-0.5cm}
-    \caption{Матрица ответов ансамбля моделей}
+    \includegraphics[width=0.7\textwidth]{ensamble_confusion_matrix}
+    \vspace*{-1.3cm}
+    \caption{Матрица предсказаний ансамбля моделей}
     \label{fig:ensamble_confusion_matrix}
 \end{figure}
