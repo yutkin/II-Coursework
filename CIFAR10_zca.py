@@ -5,7 +5,7 @@ import os
 import cPickle
 
 class CIFAR10(object):
-        def __init__(self, path):
+    def __init__(self, path):
         self.path = path
         f_meta = open(os.path.join(self.path, 'batches.meta'), 'r')
         self.meta = cPickle.load(f_meta)
